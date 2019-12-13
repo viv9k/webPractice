@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>calc</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .calculatorBodyF {
+            padding-top: 10%;
+        }
+        
+        .calcBody {
+            border: 1px solid black;
+            padding-bottom: 1%;
+        }
+        
+        #screen {
+            border: 1px solid black;
+            width: 100%;
+            padding-top: 2%;
+            border-radius: 1%;
+            text-align: right;
+        }
+        
+        button {
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        var op = "";
+        var firstNum = "";
+        var secondNum = "";
+        var result = "";
+
+        function getNumber(n) {
+            // var checkInScreen = document.getElementById("screen").value;
+            // console.log(checkInScreen);
+            document.getElementById("screen").value += n;
+        }
+
+        function clearScreen() {
+            var currentScreen = document.getElementById("screen").value;
+
+            // console.log(currentScreen);
+
+            currentScreen = parseInt(currentScreen / 10);
+
+            // console.log(currentScreen);
+
+            document.getElementById("screen").value = currentScreen;
+        }
+
+        function clearMemory() {
+            document.getElementById("screen").value = "";
+        }
+
+        function operator(ch) {
+            var screen = document.getElementById("screen").value;
+            if (firstNum != "") {
+                alert("Please enter second number and Press equals.");
+            } else {
+                if (screen == "") {
+                    alert("Please enter a Number!");
+                } else {
+                    firstNum = screen;
+                    op = ch;
+                    console.log("New Operator " + op + "\n FirstNum = " + firstNum);
+                    document.getElementById("screen").value = "";
+                }
+            }
+        }
+
+        function equals() {
+            secondNum = document.getElementById("screen").value;
+
+            switch (op) {
+                case "-":
+                    result = firstNum - secondNum;
+                    break;
+                case "+":
+                    result = firstNum + secondNum;
+                    break;
+                case "/":
+                    result = firstNum / secondNum;
+                    break;
+                case "*":
+                    result = firstNum * secondNum;
+                    break;
+                default:
+                    alert("some error occured!");
+                    break;
+            }
+
+            // console.log(result);
+            document.getElementById("screen").value = result;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="row calculatorBodyF">
+        <div class="col"></div>
+        <div class="col calcBody">
+            <div class="row">
+                <div class="col" style="padding-top: 1%;">
+                    <input type="text" name="screen" id="screen">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="clearMemory()">CE</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="clearScreen()">C</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="operator('/')">/</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="operator('*')">*</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(7)">7</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(8)">8</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(9)">9</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="operator('+')">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(4)">4</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(5)">5</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(6)">6</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="operator('-')">-</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(1)">1</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(2)">2</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="getNumber(3)">3</button>
+                </div>
+                <div class="col" style="padding-top: 1%;">
+                    <button onclick="operator('%')">%</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6" style="padding-top: 1%; ">
+                    <button onclick="getNumber(0)">0</button>
+                </div>
+                <div class="col-md-3" style="padding-top: 1%;">
+                    <button>.</button>
+                </div>
+                <div class="col-md-3" style="padding-top: 1%;">
+                    <button onclick="equals()">=</button>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</body>
+
+</htmlx
